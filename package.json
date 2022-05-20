@@ -1,0 +1,16 @@
+{
+  "name": "parrottosnoopdog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Hemmati aka DanielCodex",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "gif-extract-frames": "^1.0.2",
+    "image-to-ascii": "^3.0.13"
+  }
+}
