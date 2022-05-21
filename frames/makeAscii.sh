@@ -7,7 +7,8 @@
 #   cat "$f"
 # done
 
-for i in ./frames/*.jpg
+for i in {1..20}
 do 
-  jp2a *.jpg > a.txt
+  echo $i
+  jp2a frame-$i.jpg > $i.txt
 done

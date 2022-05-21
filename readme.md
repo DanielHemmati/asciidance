@@ -1,3 +1,6 @@
+# things that didn't worked
+
+```js
 const img2ascii = require("image-to-ascii")
 const colors = require("colors")
 const stream = require('stream');
@@ -25,3 +28,5 @@ for (let i = 0; i < 20; ++i) {
 // stream.push('\033[2J\033[3J\033[H');
 console.log('daniel hemmati');
 
+
+```

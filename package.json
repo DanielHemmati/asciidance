@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node makeItDance.js",
+    "dev":"nodemon makeItDance.js"
   },
   "author": "Daniel Hemmati aka DanielCodex",
   "license": "MIT",
@@ -14,5 +15,8 @@
     "gif-extract-frames": "^1.0.2",
     "image-to-ascii": "^3.0.13",
     "node-fetch": "^3.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }
