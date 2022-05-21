@@ -11,6 +11,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "gif-extract-frames": "^1.0.2",
-    "image-to-ascii": "^3.0.13"
+    "image-to-ascii": "^3.0.13",
+    "node-fetch": "^3.2.4"
   }
 }
