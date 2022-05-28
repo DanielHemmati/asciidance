@@ -33,7 +33,7 @@ let flipped;
   console.log("error loading frame");
   console.log(err);
 });
-console.log(original);
+
 const colorsOptions = [
   "red",
   "yellow",
@@ -51,29 +51,31 @@ const selectColor = () => {
 const streamer = (stream, opt) => {
   let index = 0;
   const frames = opt.flip ? flipped : original;
+  console.log(opt)
 
   return setInterval(() => {
     stream.push("\033[2J\033[3J\033[H");
     // const newColor = (lastColor = selectColor(lastColor));
     const newColor = selectColor();
-    console.log(`newColor is ${newColor}`);
+    // console.log(`newColor is ${newColor}`);
 
     stream.push(colors[colorsOptions[newColor]](frames[index]));
 
     index = (index + 1) % frames.length;
   }, 70);
 };
-// console.log(colors[colorsOptions[2]])
 
-const validateQuery = ({ flip }) => ({
-  // some random comment
-  flip: String(flip).toLowerCase() === "true",
-});
+const validateQuery = ({ flip }) => {
+  return {
+    flip: String(flip).toLowerCase() === true
+  }
+}
+
 
 const server = http.createServer((req, res) => {
   if (req.url === "/healthcheck") {
     res.writeHead(200, { "Content-Type": "application/json" });
-    return res.end(JSON.stringify({ status: "ok" }));
+    return res.end(JSON.stringify({ status: "ok" }) + "\n");
   }
 
   if (
@@ -82,7 +84,7 @@ const server = http.createServer((req, res) => {
     !req.headers["user-agent"].includes("curl")
   ) {
     res.writeHead(302, {
-      Location: "https://github.com/DanielCodex/parrotToSnoopDog.git",
+      Location: "https://github.com/DanielCodex/asciidance",
     });
     return res.end();
   }
@@ -94,8 +96,8 @@ const server = http.createServer((req, res) => {
     stream,
     validateQuery(url.parse(req.url, true).query)
   );
-
-  // console.log(req.url)
+  
+  console.log(req.url)
   req.on("close", () => {
     stream.destroy();
     clearInterval(interval);
