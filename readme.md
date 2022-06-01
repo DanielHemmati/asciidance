@@ -1,5 +1,7 @@
 # things that didn't worked
 
+use 
+
 ```js
 const img2ascii = require("image-to-ascii")
 const colors = require("colors")
