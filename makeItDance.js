@@ -1,4 +1,3 @@
-const { readdir, readFile } = require("fs");
 const path = require("path");
 const fs = require("fs").promises;
 const http = require("http");
