@@ -6,14 +6,14 @@
   "type": "commonjs",
   "scripts": {
     "start": "node makeItDance.js",
-    "dev":"nodemon makeItDance.js"
+    "dev": "nodemon makeItDance.js"
   },
   "author": "Daniel Hemmati aka DanielCodex",
   "license": "MIT",
   "dependencies": {
     "colors": "^1.4.0",
     "gif-extract-frames": "^1.0.2",
-    "image-to-ascii": "^3.0.13",
+    "jp2a": "^0.2.0",
     "node-fetch": "^3.2.4"
   },
   "devDependencies": {
