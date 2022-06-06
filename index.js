@@ -1,11 +1,14 @@
 const fs = require("fs");
 const extractFrames = require("gif-extract-frames");
+const jp2a = require("jp2a");
 
-async function asciidance(gifFile) {
+async function asciidance(gifFile, asciiConfig) {
   const frameDir = "./frames";
+  const asciiDir = "./ascii";
 
-  if (!fs.existsSync(frameDir)) {
+  if (!fs.existsSync(frameDir) || !fs.existsSync(asciiDir)) {
     fs.mkdirSync(frameDir, { recursive: true });
+    fs.mkdirSync(asciiDir, { recursive: true });
   }
 
   const gifToFrames = await extractFrames({
@@ -14,8 +17,21 @@ async function asciidance(gifFile) {
   });
 
   const NumberOfFrames = fs.readdirSync(frameDir).length;
-
-
+  // console.log(asciiConfig.bg);
+  console.log(  `${asciiConfig.bg ? `--background=${asciiConfig.bg}` : ``}`)
+  for (let i = 0; i < NumberOfFrames; ++i) {
+    jp2a(
+      [
+        `./frames/frame-${i}.jpg`,
+        `${asciiConfig.chars ? `--chars=${asciiConfig.chars}` : ``}`,
+        `${asciiConfig.bg ? `--background=${asciiConfig.bg}` : ``}`,
+      ],
+      function (ouput) {
+        console.log(ouput);
+        fs.writeFileSync(`./${asciiDir}/ascii-${i}.txt`, ouput);
+      }
+    );
+  }
 }
 
-asciidance("snoopdog.gif");
+asciidance("snoopdog.gif", { bg: "light", chars: "##!!!!#@##" });
