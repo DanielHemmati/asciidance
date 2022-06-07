@@ -9,6 +9,10 @@
     "dev": "nodemon makeItDance.js"
   },
   "author": "Daniel Hemmati aka DanielCodex",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielCodex/asciidance.git"
+  },
   "license": "MIT",
   "dependencies": {
     "colors": "^1.4.0",
