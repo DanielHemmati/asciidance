@@ -1,15 +1,17 @@
 const fs = require("fs");
 const extractFrames = require("gif-extract-frames");
 const jp2a = require("jp2a");
-const makeItDance = require('./makeItDance');
+const makeItDance = require("./makeItDance");
 
 /**
- * 
+ *
  * @param {string} gifFile the gif file which will convert to ascii
  * @param {Object} asciiConfig config for how the ascii should looks like
  * @param {Object} danceConfig config for how should ascii dance on a terminal
+ * @param {Number} delay it will run the terminalDance happen after 5s. if you put it zero at first it won't work. see docs: https://github.com/DanielCodex/asciidance
+
  */
-async function asciidance(gifFile, asciiConfig={}, danceConfig={}) {
+async function asciidance(gifFile, asciiConfig = {}, danceConfig = {}, delay = 5000) {
   const frameDir = "./frames";
   const asciiDir = "./ascii";
 
@@ -24,7 +26,7 @@ async function asciidance(gifFile, asciiConfig={}, danceConfig={}) {
   });
 
   const NumberOfFrames = fs.readdirSync(frameDir).length;
-  
+
   for (let i = 0; i < NumberOfFrames; ++i) {
     jp2a(
       [
@@ -43,7 +45,7 @@ async function asciidance(gifFile, asciiConfig={}, danceConfig={}) {
     );
   }
 
-  await makeItDance(danceConfig);
+  setTimeout(() => makeItDance(danceConfig), 5000);
 }
 
 module.exports = asciidance;
