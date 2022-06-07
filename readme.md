@@ -1,6 +1,7 @@
 # Asciidance
 
 This project is inpired from [parrot.live](https://github.com/hugomd/parrot.live).  
+
 Basically i wanted to make any gifs to ascii and make it dance on terminal hence the name **asciidance**.  
 
 So The process of getting this result for any gifs is:  
