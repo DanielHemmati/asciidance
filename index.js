@@ -8,10 +8,8 @@ const makeItDance = require("./makeItDance");
  * @param {string} gifFile the gif file which will convert to ascii
  * @param {Object} asciiConfig config for how the ascii should looks like
  * @param {Object} danceConfig config for how should ascii dance on a terminal
- * @param {Number} delay it will run the terminalDance happen after 5s. if you put it zero at first it won't work. see docs: https://github.com/DanielCodex/asciidance
-
  */
-async function asciidance(gifFile, asciiConfig = {}, danceConfig = {}, delay = 5000) {
+async function asciidance(gifFile, asciiConfig = {}, danceConfig = {}) {
   const frameDir = "./frames";
   const asciiDir = "./ascii";
 
@@ -45,7 +43,7 @@ async function asciidance(gifFile, asciiConfig = {}, danceConfig = {}, delay = 5
     );
   }
 
-  setTimeout(() => makeItDance(danceConfig), 5000);
+  setTimeout(() => makeItDance(danceConfig), 2000);
 }
 
 module.exports = asciidance;
