@@ -26,6 +26,8 @@ async function asciidance(gifFile, asciiConfig={}) {
         `${asciiConfig.chars ? `--chars=${asciiConfig.chars}` : ``}`,
         `${asciiConfig.bg ? `--background=${asciiConfig.bg}` : ``}`,
         `${asciiConfig.border ? `--${asciiConfig.border}` : ``}`,
+        `${asciiConfig.flipx ? `--${asciiConfig.flipx}` : ``}`,
+        `${asciiConfig.flipy ? `--${asciiConfig.flipy}` : ``}`,
       ],
       function (ouput) {
         console.log(ouput);
@@ -35,4 +37,4 @@ async function asciidance(gifFile, asciiConfig={}) {
   }
 }
 
-asciidance("snoopdog.gif", { bg: "light", chars: "##!!!!#@##", border: "border" });
+asciidance("snoopdog.gif", { bg: "light", border: "border", });
