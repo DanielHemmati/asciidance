@@ -1,8 +1,15 @@
 const fs = require("fs");
 const extractFrames = require("gif-extract-frames");
 const jp2a = require("jp2a");
+const makeItDance = require('./makeItDance');
 
-async function asciidance(gifFile, asciiConfig={}) {
+/**
+ * 
+ * @param {string} gifFile the gif file which will convert to ascii
+ * @param {Object} asciiConfig config for how the ascii should looks like
+ * @param {Object} danceConfig config for how should ascii dance on a terminal
+ */
+async function asciidance(gifFile, asciiConfig={}, danceConfig={}) {
   const frameDir = "./frames";
   const asciiDir = "./ascii";
 
@@ -17,8 +24,7 @@ async function asciidance(gifFile, asciiConfig={}) {
   });
 
   const NumberOfFrames = fs.readdirSync(frameDir).length;
-  // console.log(asciiConfig.bg);
-  console.log(  `${asciiConfig.bg ? `--background=${asciiConfig.bg}` : ``}`)
+  
   for (let i = 0; i < NumberOfFrames; ++i) {
     jp2a(
       [
@@ -32,11 +38,12 @@ async function asciidance(gifFile, asciiConfig={}) {
         `${asciiConfig.width ? `--width=${asciiConfig.width}` : ``}`,
       ],
       function (ouput) {
-        console.log(ouput);
         fs.writeFileSync(`./${asciiDir}/ascii-${i}.txt`, ouput);
       }
     );
   }
+
+  await makeItDance(danceConfig);
 }
 
-asciidance("snoopdog.gif", {  border: "border"});
+module.exports = asciidance;
