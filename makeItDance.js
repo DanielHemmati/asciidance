@@ -6,7 +6,6 @@ const url = require("url");
 const { Readable } = require("stream");
 
 let original;
-let flipped;
 
 (async () => {
   try {
@@ -16,14 +15,10 @@ let flipped;
     original = await Promise.all(
       files.map(async (res) => {
         const frame = await fs.readFile(path.join(filePath, res));
-        // console.log(path.join(filePath, res))
         return frame.toString();
       })
     ).then((res) => res);
 
-    flipped = original.map((item) => {
-      return item.toString().split("").reverse().join("");
-    });
     // console.log(flipped)
   } catch (err) {
     console.log(err);
@@ -47,28 +42,18 @@ const selectColor = () => {
   return randomNumber;
 };
 
-const streamer = (stream, opt) => {
+const streamer = (stream) => {
   let index = 0;
-  const frames = opt.flip ? flipped : original;
-  console.log(opt)
 
   return setInterval(() => {
     stream.push("\033[2J\033[3J\033[H");
-    // const newColor = (lastColor = selectColor(lastColor));
     const newColor = selectColor();
-    // console.log(`newColor is ${newColor}`);
 
-    stream.push(colors[colorsOptions[newColor]](frames[index]));
+    stream.push(colors[colorsOptions[newColor]](original[index]));
 
-    index = (index + 1) % frames.length;
+    index = (index + 1) % original.length;
   }, 70);
 };
-
-const validateQuery = ({ flip }) => {
-  return {
-    flip: String(flip).toLowerCase() === true
-  }
-}
 
 
 const server = http.createServer((req, res) => {
@@ -93,9 +78,8 @@ const server = http.createServer((req, res) => {
   stream.pipe(res);
   const interval = streamer(
     stream,
-    validateQuery(url.parse(req.url, true).query)
   );
-  
+
   console.log(req.url)
   req.on("close", () => {
     stream.destroy();
