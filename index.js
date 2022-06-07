@@ -39,4 +39,4 @@ async function asciidance(gifFile, asciiConfig={}) {
   }
 }
 
-asciidance("simpson.gif", {  border: "border"});
+asciidance("snoopdog.gif", {  border: "border"});
