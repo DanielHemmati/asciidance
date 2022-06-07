@@ -1,12 +1,16 @@
 const extractFrames = require("gif-extract-frames");
 
-async function getFrame() {
+/**
+ *
+ * @param {String} gifPath
+ * @returns
+ */
+ async function getFrame(gifFileName) {
   const results = await extractFrames({
-    input: "./gifs/snoopdog.gif",
+    input: `./gifs/${gifFileName}`,
     output: "./frames/frame-%d.jpg",
-    coalesce: true
   });
   return results;
 }
 
-getFrame()
+module.exports = getFrame;

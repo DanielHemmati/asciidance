@@ -1,12 +1,42 @@
+const fs = require("fs");
 const extractFrames = require("gif-extract-frames");
+const jp2a = require("jp2a");
 
-async function getFrame() {
-  const results = await extractFrames({
-    input: "./gifs/snoopdog.gif",
+async function asciidance(gifFile, asciiConfig={}) {
+  const frameDir = "./frames";
+  const asciiDir = "./ascii";
+
+  if (!fs.existsSync(frameDir) || !fs.existsSync(asciiDir)) {
+    fs.mkdirSync(frameDir, { recursive: true });
+    fs.mkdirSync(asciiDir, { recursive: true });
+  }
+
+  const gifToFrames = await extractFrames({
+    input: `./gifs/${gifFile}`,
     output: "./frames/frame-%d.jpg",
-    coalesce: true
   });
-  return results;
+
+  const NumberOfFrames = fs.readdirSync(frameDir).length;
+  // console.log(asciiConfig.bg);
+  console.log(  `${asciiConfig.bg ? `--background=${asciiConfig.bg}` : ``}`)
+  for (let i = 0; i < NumberOfFrames; ++i) {
+    jp2a(
+      [
+        `./frames/frame-${i}.jpg`,
+        `${asciiConfig.chars ? `--chars=${asciiConfig.chars}` : ``}`,
+        `${asciiConfig.bg ? `--background=${asciiConfig.bg}` : ``}`,
+        `${asciiConfig.border ? `--${asciiConfig.border}` : ``}`,
+        `${asciiConfig.flipx ? `--${asciiConfig.flipx}` : ``}`,
+        `${asciiConfig.flipy ? `--${asciiConfig.flipy}` : ``}`,
+        `${asciiConfig.size ? `--size=${asciiConfig.size}` : ``}`,
+        `${asciiConfig.width ? `--width=${asciiConfig.width}` : ``}`,
+      ],
+      function (ouput) {
+        console.log(ouput);
+        fs.writeFileSync(`./${asciiDir}/ascii-${i}.txt`, ouput);
+      }
+    );
+  }
 }
 
-getFrame()
+asciidance("simpson.gif", {  border: "border"});
