@@ -2,7 +2,7 @@ const fs = require("fs");
 const extractFrames = require("gif-extract-frames");
 const jp2a = require("jp2a");
 
-async function asciidance(gifFile, asciiConfig) {
+async function asciidance(gifFile, asciiConfig={}) {
   const frameDir = "./frames";
   const asciiDir = "./ascii";
 
@@ -25,6 +25,7 @@ async function asciidance(gifFile, asciiConfig) {
         `./frames/frame-${i}.jpg`,
         `${asciiConfig.chars ? `--chars=${asciiConfig.chars}` : ``}`,
         `${asciiConfig.bg ? `--background=${asciiConfig.bg}` : ``}`,
+        `${asciiConfig.border ? `--${asciiConfig.border}` : ``}`,
       ],
       function (ouput) {
         console.log(ouput);
@@ -34,4 +35,4 @@ async function asciidance(gifFile, asciiConfig) {
   }
 }
 
-asciidance("snoopdog.gif", { bg: "light", chars: "##!!!!#@##" });
+asciidance("snoopdog.gif", { bg: "light", chars: "##!!!!#@##", border: "border" });
