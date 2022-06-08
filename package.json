@@ -1,5 +1,5 @@
 {
-  "name": "asciidance",
+  "name": "@danielcodex/asciidance",
   "version": "1.0.0",
   "description": "it's parrot.live 🦜 but for any gifs you like",
   "main": "index.js",
