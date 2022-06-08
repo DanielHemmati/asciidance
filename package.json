@@ -1,7 +1,7 @@
 {
   "name": "asciidance",
   "version": "1.0.0",
-  "description": "",
+  "description": "it's parrot.live 🦜 but for any gifs you like",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
