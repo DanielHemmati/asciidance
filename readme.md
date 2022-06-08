@@ -85,7 +85,7 @@ asciidance("snoopdog.gif", { flipy: "flipy" });
 
 ## API
 
-### asciidance(gifFile, asciiConfig?, danceConfig?)  
+### asciidance(gifFile, asciiConfig?)  
 
 #### gifFile  
 
