@@ -25,15 +25,14 @@ npm install asciidance
 
 1. You have to put your gifs on a `gifs` folder  
 2. Everytime you run the code again (as you can see in a quick example above) you have to delete both `ascii` and `frames` folder  
-3. You have to install `jp2a` on your computer 
+3. You have to install `jp2a` on your computer
    1. For installing on Windows use [wsl](https://docs.microsoft.com/en-us/windows/wsl/install)
    2. For installin on Mac use [brew](https://formulae.brew.sh/formula/jp2a)
    3. For installing on Ubuntu use `sudo apt-get install jp2a`
 
-
 ## Example
 
-```js 
+```js
 const asciidance = require("asciidance");
 
 asciidance("snoopdog.gif", { border: "border" })
@@ -41,11 +40,46 @@ asciidance("snoopdog.gif", { border: "border" })
 
 ### Custom characters  
 
-```js 
+```js
 const asciidance = require("asciidance");
 
 asciidance("snoopdog.gif", { chars: "!@#$%^&()_+" })
 ```
+
+![custom-chars](tutorial/custom-chars.png)  
+
+### border
+
+```js
+const asciidance = require("asciidance");
+
+asciidance("snoopdog.gif", { border: "border" });
+```
+
+![boder](tutorial/border.png)
+
+### flip-horizontal
+
+
+```js
+const asciidance = require("asciidance");
+
+asciidance("snoopdog.gif", { flipx: "flipx" });
+```
+
+![flipx](tutorial/flipx.gif)
+
+
+### flip-vertical
+
+```js
+const asciidance = require("asciidance");
+
+asciidance("snoopdog.gif", { flipy: "flipy" });
+```
+
+
+
 
 ---
 
@@ -70,15 +104,40 @@ Default: `dark`
 
 The other option is `light`
 
-
 ##### chars
 
 Type: `string`  
 Default: [jp2a default chars](https://csl.name/jp2a/)  
 
-Here is the [example](#Custom-characters)
+Here is the [example](#Custom-characters)  
+
+##### Border
+
+Type: `string`  
+Default: `undefined`  
+
+You can set it to `border`  
+Here is the [example](#border)  
+
+##### flipx
+
+Type: `string`  
+Default: `undefined`  
+
+You can flip the ascii in the x axis  
+Here is the [example](#flip-horizontal)
+
+
+##### flipy
+
+Type: `string`  
+Default: `undefined`  
+
+you can flip the ascii in the y axis  
+Here is the [example](#flip-vertical)
 
 ---
+
 ## Buggy behaviour
 
 Intentionally i run one code after 2s. Here is the [link](https://github.com/DanielCodex/asciidance/blob/071add85490b1a6551eefec6e78115c0a105b938/index.js#L46)  
@@ -92,4 +151,3 @@ That's why i delay the called for `makeItDance()` function.
 If you used a gifs which was really long (i haven't seen a long gifs myself 🤔😂) you might not see anything on terminal the moment you run `curl localhost:3000`.  
 
 In order for that to work just run the your code again and run `curl localhost:3000` (it will works)
-
