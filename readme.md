@@ -13,6 +13,7 @@ So The process of getting this result for any gifs is:
 All of this happen will happen behind the secene when you use **asciidance**  
 
 Here is the quick example  
+![](./tutorial//quick-example.gif)  
 
 ## Install
 
@@ -23,7 +24,11 @@ npm install asciidance
 ## Before running examples
 
 1. You have to put your gifs on a `gifs` folder  
-2. I
+2. Everytime you run the code again (as you can see in a quick example above) you have to delete both `ascii` and `frames` folder  
+3. You have to install `jp2a` on your computer 
+   1. For installing on Windows use [wsl](https://docs.microsoft.com/en-us/windows/wsl/install)
+   2. For installin on Mac use [brew](https://formulae.brew.sh/formula/jp2a)
+   3. For installing on Ubuntu use `sudo apt-get install jp2a`
 
 
 ## Example
@@ -34,7 +39,46 @@ const asciidance = require("asciidance");
 asciidance("snoopdog.gif", { border: "border" })
 ```
 
+### different chars
 
+```js 
+const asciidance = require("asciidance");
+
+asciidance("snoopdog.gif", { chars: "!@#$%^&()_+" })
+```
+
+---
+
+## API
+
+### asciidance(gifFile, asciiConfig?, danceConfig?)  
+
+#### gifFile  
+
+Type: `string`  
+Your gif file name
+
+#### asciiConfig
+
+Type: `object`  
+Options for how you ascii should look like  
+
+##### bg
+
+Type: `string`  
+Default: `dark`  
+
+The other option is `light`
+
+
+##### chars
+
+Type: `string`  
+Default: [jp2a default chars](https://csl.name/jp2a/)  
+
+Here is the [example](#different chars)
+
+---
 ## Buggy behaviour
 
 Intentionally i run one code after 2s. Here is the [link](https://github.com/DanielCodex/asciidance/blob/071add85490b1a6551eefec6e78115c0a105b938/index.js#L46)  
