@@ -9,7 +9,7 @@ const makeItDance = require("./makeItDance");
  * @param {Object} asciiConfig config for how the ascii should looks like
  * @param {Object} danceConfig config for how should ascii dance on a terminal
  */
-async function asciidance(gifFile, asciiConfig = {}, danceConfig = {}) {
+async function asciidance(gifFile, asciiConfig = {}) {
   const frameDir = "./frames";
   const asciiDir = "./ascii";
 
@@ -43,7 +43,7 @@ async function asciidance(gifFile, asciiConfig = {}, danceConfig = {}) {
     );
   }
 
-  setTimeout(() => makeItDance(danceConfig), 2000);
+  setTimeout(() => makeItDance(asciiConfig), 2000);
 }
 
 module.exports = asciidance;
