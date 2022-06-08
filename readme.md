@@ -40,7 +40,7 @@ const asciidance = require("asciidance");
 asciidance("snoopdog.gif", { bg: "light" });
 ```
 
-![ bg ](tutorial/bg.gif)
+![bg](tutorial/bg.gif)
 
 ### Custom characters
 
