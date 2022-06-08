@@ -10,7 +10,7 @@ So The process of getting this result for any gifs is:
 2. we have to extract frames from gifs
 3. at last we have to turn those frames to ascii
 
-All of this happen will happen behind the secene when you use **asciidance**
+All of this will happen behind the secene when you use **asciidance**
 
 Here is the quick example  
 ![quick example](./tutorial//quick-example.gif)
@@ -25,7 +25,7 @@ npm install asciidance
 
 1. You have to install `jp2a` on your computer
    1. For installing on Windows use [wsl](https://docs.microsoft.com/en-us/windows/wsl/install)
-   2. For installin on Mac use [brew](https://formulae.brew.sh/formula/jp2a)
+   2. For installing on Mac use [brew](https://formulae.brew.sh/formula/jp2a)
    3. For installing on Ubuntu use `sudo apt-get install jp2a`
 2. You have to put your gifs on a `gifs` folder
 3. Everytime you run the code again (as you can see in a quick example above) you have to delete both `ascii` and `frames` folder
@@ -150,7 +150,7 @@ asciiDance("snoop.gif", {
 #### gifFile
 
 Type: `string`  
-Your gif file name
+Your gif file name  
 
 #### asciiConfig
 
@@ -225,7 +225,7 @@ Here is the [example](#custom-colors)
 ##### customColor
 
 Type: `array`  
-Default: `["red", "yellow", "green", "blue", "magenta", "cyan", "white"]`
+Default: `["red", "yellow", "green", "blue", "magenta", "cyan", "white"]`  
 
 You can give choose any color from default array.  
 This colors come from [colors npm](https://www.npmjs.com/package/colors) package.  
@@ -246,4 +246,6 @@ That's why i delay the called for `makeItDance()` function.
 
 If you used a gifs which was really long (i haven't seen a long gifs myself 🤔😂) you might not see anything on terminal the moment you run `curl localhost:3000`.
 
-In order for that to work just run the your code again and run `curl localhost:3000` (it will works)
+In order for that to work just run the your code again and then run `curl localhost:3000` (it will works, i promise)  
+
+Happy coding 🤗
