@@ -166,6 +166,8 @@ Default: `dark`
 
 The other option is `light`  
 
+Here is the [example](#background)
+
 ##### chars
 
 Type: `string`  
