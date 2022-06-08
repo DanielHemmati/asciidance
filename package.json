@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node makeItDance.js",
-    "dev": "nodemon makeItDance.js"
+    "hello": "echo \"hello world \""
   },
   "author": "Daniel Hemmati aka DanielCodex",
   "repository": {
