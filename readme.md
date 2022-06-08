@@ -39,7 +39,7 @@ const asciidance = require("asciidance");
 asciidance("snoopdog.gif", { border: "border" })
 ```
 
-### different chars
+### Custom characters  
 
 ```js 
 const asciidance = require("asciidance");
@@ -76,7 +76,7 @@ The other option is `light`
 Type: `string`  
 Default: [jp2a default chars](https://csl.name/jp2a/)  
 
-Here is the [example](#different chars)
+Here is the [example](#Custom-characters)
 
 ---
 ## Buggy behaviour
