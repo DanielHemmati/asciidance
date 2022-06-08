@@ -16,8 +16,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "gif-extract-frames": "^1.0.2",
-    "jp2a": "^0.2.0",
-    "node-fetch": "^3.2.4"
+    "jp2a": "^0.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
